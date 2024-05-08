@@ -13,6 +13,9 @@ client = OpenAI(
 )
 CORS(app)  # Enable CORS for all routes of the Flask app
 
+@app.route('/')
+def home():
+   return render_template('index.html')
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory(AUDIO_DIR, filename, mimetype='audio/wav')
