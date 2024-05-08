@@ -2,5 +2,3 @@
 
 ### how to start
 `python app.py`
-
-then start index.html.
