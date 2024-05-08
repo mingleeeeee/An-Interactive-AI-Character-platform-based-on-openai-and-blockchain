@@ -4,7 +4,7 @@ $(document).ready(function() {
         var prompt = $('#prompt').val();
 
         $.ajax({
-            url: 'http://localhost:5050/role-play',
+            url: 'http://localhost:5000/role-play',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ prompt: prompt }),
@@ -12,7 +12,7 @@ $(document).ready(function() {
                 $('#response').text(data.response);
 
                 // Update audio source URL to retrieve from Flask server
-                var audioUrl = `http://localhost:5050/static/${data.audio_filename}`;
+                var audioUrl = `http://localhost:5000/static/${data.audio_filename}`;
                 $('#audioPlayer source').attr('src', audioUrl);
 
                 // Wait for audio file to be loaded and then play it

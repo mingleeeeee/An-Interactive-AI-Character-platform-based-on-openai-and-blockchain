@@ -1,0 +1,17 @@
+ server {
+        listen       80;
+        listen       [::]:80;
+        server_name  3.144.129.62;
+        root         /home/ubuntu/An-Interactive-AI-Character-platform-based-on-openai-and-blockchain;
+
+        location / {
+                try_files $uri @flask;
+        }
+
+        location @flask {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_redirect off;
+                proxy_pass http://127.0.0.1:5000; 
+	}
+    }
