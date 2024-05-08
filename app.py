@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
 from pathlib import Path
@@ -14,8 +14,8 @@ client = OpenAI(
 CORS(app)  # Enable CORS for all routes of the Flask app
 
 @app.route('/')
-def home():
-   return render_template('index.html')
+def static_file():
+    return app.send_static_file('index.html')
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory(AUDIO_DIR, filename, mimetype='audio/wav')
